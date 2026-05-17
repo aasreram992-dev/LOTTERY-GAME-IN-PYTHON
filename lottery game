@@ -1,0 +1,30 @@
+import numpy as np
+
+class Lotterygame:
+    def __init__(self):
+        self.winning_number = None
+    
+    def generate_winning_number(self):
+        number = np.random.randint(0, 100)
+        self.winning_number = round(number)
+    
+    def get_user_input(self):
+        while True:
+            try:
+                user_input = int(input("Enter a number between 0 and 99: "))
+                if 0<= user_input <100:
+                    return user_input
+                else:
+                    print("please enter a valid number between 0 to 99.")
+            except ValueError:
+                    print("invalid input please enter a number between 0 to 99.")
+    def check_winning(self, user_input):
+        if user_input == self.winning_number:
+            print("congratualations! you win the lottery!")
+        else:
+            print(f"Sorry the winning number was {self.winning_number}. better luck next time.")
+    
+game = Lotterygame()
+game.generate_winning_number()
+user_input = game.get_user_input()
+game.check_winning(user_input)
